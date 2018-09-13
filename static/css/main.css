@@ -1,34 +1,79 @@
 /* main.css: Add and override styles */
 
-.section-heading {
-	display: inline-block;	
-	  float: none;
-	 margin: 0;
+.navbar {
+ background-color: lightgrey;
+ border-color: steelblue;
+ margin: 0;   
 }
 
 .section-heading {
-	margin-bottom: 50px;
+	   display: inline-block;	
+	     float: none;
+ margin-bottom: 20px;
 }
 
-#country-selector {
-    font-size: 10px; 
-  margin-left: 15px;
+.number-display {
+   margin-left:  5px;
+  margin-right: 75px; 
+}
+
+/* google icons  */
+.material-icons {
+  display: inline-block; 
+  font-size: 2em;
+}
+
+.dc-data-count {
+  margin-bottom: 10px;
+}
+
+/* units sold by Country select menu */ 
+.dc-chart select {
+    width: 350px;
+ }
+
+.units-sold-sub-region-chart{
+  margin-left: 10px;
+}
+
+.country-units-sold-selector {
+    font-size: 12px; 
+  margin-left: 10px;
+}
+
+.units-sold-item-type-chart {
+  margin-left: 10px;
 }
 
 .dc-chart g.row text {
   fill: black;  
 }
 
-.dc-chart .pie-slice {
-       fill: yellow;
-  font-size: 10px; 
-}
-
 .bar:hover {
   fill: yellow;
 }
 
-/* not show .group in dc.dataTable */
-.dc-table-group {
-  visibility: collapse;
+/* Alight Column 0 in dc.dataTable */ 
+.dc-table-row .dc-table-column._0 {
+  text-align: left;
 }
+
+/* Alight Column 1 in dc.dataTable */
+.dc-table-row .dc-table-column._1 {
+  text-align: left;
+}
+
+/* Alight Column 2 in dc.dataTable */
+.dc-table-row .dc-table-column._2 {
+  text-align: center;
+}
+
+/* Alight Column 3 in dc.dataTable */
+.dc-table-row .dc-table-column._3 {
+  text-align: center;
+}
+
+/* Alight Column 4 to 9 in dc.dataTable */
+.dc-chart td {
+  text-align: right;
+}  
