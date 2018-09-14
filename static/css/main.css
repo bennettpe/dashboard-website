@@ -17,6 +17,10 @@
   margin-right: 75px; 
 }
 
+.reset_all_button {
+  margin-left: 10px;
+}
+
 /* google icons  */
 .material-icons {
   display: inline-block; 

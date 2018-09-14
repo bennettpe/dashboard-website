@@ -18,6 +18,7 @@
     <!-- CROSSFILTER minified JavaScript file (v1.3.12)   --> <script type="text/javascript" src="/static/js/crossfilter.min.js">                                         </script>
     <!-- DC minified JavaScript file (v2.1.8)             --> <script type="text/javascript" src="/static/js/dc.min.js">                                                  </script>
     <!-- JQUERY minified JavaScript file (v3.3.1)         --> <script type="text/javascript" src="/static/js/jquery.min.js">                                              </script> 
+    <!-- D3 TIP JavaScript file (v0.9.1)                  --> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.min.js">     </script>
     <!-- BOOTSTRAP minified JavaScript file (v3.5.17)     --> <script type="text/javascript" src="/static/js/bootstrap.min.js">                                           </script> 
     <!-- QUEUE minified JavaScript file (v1.0.7)          --> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"> </script>
     <!-- dashboard JavaScript file                        --> <script type="text/javascript" src="/static/js/main.js">                                                    </script> 
@@ -25,6 +26,36 @@
 <style>
 body {
  font-family: 'Lato', futura, georgia;
+}
+
+/* d3 tooltip */
+.d3-tip {
+    background: rgba(0, 0, 0, 0.8);
+ border-radius: 2px;
+         color: #fff;
+   font-weight: bold;
+   line-height: 1;
+       padding: 12px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+       color: rgba(0, 0, 0, 0.8);
+     content: "\25BC";
+     display: inline;
+   font-size: 10px;
+ line-height: 1;
+    position: absolute;
+  text-align: center;
+       width: 100%;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+   left: 0; 
+ margin: -1px 0 0 0;
+    top: 100%;
 }
 
 h4 span {
@@ -58,21 +89,22 @@ h4 span {
         </div>
         
         <div class="span4 dc-data-count">
-             <span class="filter-count"> </span> selected out of <span class="total-count"> </span> records &nbsp; 
-             <a href="javascript:dc.filterAll(); dc.renderAll();"> <button type="button" class="reset_all_button" id="reset_button"> Reset All Filters </button> </a> 
+             <span class="filter-count"> </span> selected out of <span class="total-count"> </span> records | 
+             <a href="javascript:dc.filterAll(); dc.renderAll();"> Reset ALL Filter </a>
+            </div>  
         </div>
       </div>
      </div>
     </section>  
 
-    <section class="section">  
+    <section class="section">
      <div class="container">
       <div class="row">
         
         <div class="span4 units-sold-sub-region-chart text-center" id="dc-units-sold-sub-region-chart">
-         <h4> Units Sold by Sub Region 
-          <span> <a class="reset" href="javascript:unitssoldsubregionChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
-         </h4> 
+         <h4> Units Sold by Sub Region  
+           <span> <a class="reset" href="javascript:show_units_sold_subregion_Chart.filterAll(); dc.redrawAll();" style="display: none;"> | Reset </a> </span>
+         </h4>
         </div>
         
         <div class="span4 country-units-sold-selector text-center" id="country-units-sold-selector"> 
@@ -80,8 +112,8 @@ h4 span {
         </div>
         
         <div class="span4 units-sold-item-type-chart text-center" id="dc-units-sold-item-type-chart">
-         <h4> Units Sold by Item Type 
-         <span> <a class="reset" href="javascript:unitssolditemtypeChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
+         <h4> Units Sold by Item Type
+           <span> <a class="reset" href="javascript:show_units_sold-item_type_Chart.filterAll(); dc.redrawAll();" style="display: none;"> | Reset </a> </span>
          </h4>
         </div>
       </div>
@@ -91,20 +123,20 @@ h4 span {
      <div class="container">    
       <div class="row">
           <div class="span4 barChart text-center" id="dc-total-revenue-chart">  
-            <h4> Total Revenue (GBP) by Order Date Month 
-            <span> <a class="reset" href="javascript:totalrevenueChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
+            <h4> Total Revenue (GBP) by Order Date Month
+              <span> <a class="reset" href="javascript:show_total_cost_Chart.filterAll(); dc.redrawAll();" style=display: none;"> | Reset </a> </span>
             </h4>
           </div> 
           
           <div class="span4 barChart text-center" id="dc-total-cost-chart">  
-            <h4> Total Cost (GBP) by Order Date Month 
-            <span> <a class="reset" href="javascript:totalcostChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
+            <h4> Total Cost (GBP) by Order Date Month
+              <span> <a class="reset" href="javascript:show_total_cost_Chart.filterAll(); dc.redrawAll();" style=display: none;"> | Reset </a> </span>
             </h4>
           </div>
           
           <div class="span4 barChart text-center" id="dc-total-profit-chart">  
-            <h4> Total Profits (GBP) by Order Date Month 
-            <span> <a class="reset" href="javascript:totalprofitChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
+            <h4> Total Profits (GBP) by Order Date Month
+              <span> <a class="reset" href="javascript:show_total_cost_Chart.filterAll(); dc.redrawAll();" style=display: none;"> | Reset </a> </span>
             </h4>
           </div>
       </div>
