@@ -7,14 +7,13 @@
 }
 
 .section-heading {
-	   display: inline-block;	
-	     float: none;
+	     display: inline-block;	
+	       float: none;
  margin-bottom: 20px;
 }
 
 .number-display {
-   margin-left:  5px;
-  margin-right: 75px; 
+  margin-right: 35px; 
 }
 
 .reset_all_button {
@@ -33,7 +32,8 @@
 
 /* units sold by Country select menu */ 
 .dc-chart select {
-    width: 350px;
+  height:  30px;
+   width: 350px;
  }
 
 .units-sold-sub-region-chart{
