@@ -1,11 +1,11 @@
-/* Load CSV Data */
+    /* Load CSV Data */
       queue()
        .defer(d3.csv, "/data/2013 Sales Records.csv")
        .await(getData);
        
 function getData(error, salesData) {
     
-/* Process data through crossfilter */
+    /* Process data through crossfilter */
         var ndx = crossfilter(salesData); 
         var all = ndx.groupAll();   
              
@@ -61,10 +61,10 @@ function getData(error, salesData) {
            d.Units_Sold       = +d.Units_Sold;
         });
         
-   /* groupAll function to sum up the values */
+    /* groupAll function to sum up the values */
        var allDim = ndx.dimension(function(d) { return d; });  
    
-   /* groupAll function to sum up values for dc.numberDisplay(s) */       
+    /* groupAll function to sum up values for dc.numberDisplay(s) */       
        var sumAlltotals = allDim.groupAll().reduce( 
               function(p, v) {
                               p.unitCountSum  += v.Units_Sold
@@ -124,7 +124,7 @@ function getData(error, salesData) {
                    .transitionDuration(500)
                    .valueAccessor(function (d) { return d.unitCountSum; });  
                    
-   /* Create Dimensionand Group for Sub_Region */
+    /* Create Dimensionand Group for Sub_Region */
        var subRegionDim                = ndx.dimension(function(d) { return d.Sub_Region; }),                                              // Dimension by Sub-Region
            unitSoldBySubRegionGroup    = subRegionDim.group().reduceSum(function(d) { return d.Units_Sold; });                             // Unit_Sold by Sub_Region
     
@@ -147,37 +147,37 @@ function getData(error, salesData) {
     // print_filter("totalProfitSubRegionGroupFiltered");
      
     /* Create dc.dataCount */
-       dc.dataCount(".dc-data-count")
-         .dimension(ndx)
-         .group(all)
-         .html({
-                some: "<span style=\"color:#6495ED;\"> <strong> %filter-count </strong> </span> <span> selected out of <span style=\"color:#6495ED;\"> <strong> %total-count </strong> </span> records " + 
-                      " <a href=\"javascript:dc.filterAll(); dc.renderAll();\"> &nbsp; <i> Reset All Filters </i>  </a> ",
-                 all: "<span> All" +  
-                      "<span style=\"color:#6495ED;\"> <strong> %total-count </strong> </span>" + 
-                      "<span> records selected, Please click on graph(s) to apply filters."
-              });
+         dc.dataCount(".dc-data-count")
+           .dimension(ndx)
+           .group(all)
+           .html({
+                  some: "<span style=\"color:#6495ED;\"> <strong> %filter-count </strong> </span> <span> selected out of <span style=\"color:#6495ED;\"> <strong> %total-count </strong> </span> records " + 
+                        " <a href=\"javascript:dc.filterAll(); dc.renderAll();\"> &nbsp; <i> Reset All Filters </i>  </a> ",
+                   all: "<span> All" +  
+                        "<span style=\"color:#6495ED;\"> <strong> %total-count </strong> </span>" + 
+                        "<span> records selected, Please click on graph(s) to apply filters."
+                });
               
     /* Country Selection Menu */
-       unitssoldcountryMenu
-         .dimension(countryDim)
-         .group(unitSoldByCountryGroup)
-         .promptText('Select All Countries')
+         unitssoldcountryMenu
+          .dimension(countryDim)
+          .group(unitSoldByCountryGroup)
+          .promptText('Select All Countries')
     
     /* Units Sold by Sub_Region Chart */ 
-       unitssoldsubregionChart
-         .height(300).width(600)
-         .dimension(subRegionDim)
-         .group(unitSoldBySubRegionGroup)
-         .elasticX(true)
-         .gap(1)
-         .label(function(d) { return d.key + " : " + d3.format(",") (+d.value); })
-         .margins({top: 10, right: 20, bottom: 30, left: 10})
-         .ordering(function(d) { return d.Sub_Region; })
-         .ordinalColors(SchemeSet3)
-         .title(function(d){ return "Units Sold: " + d3.format(",") (+d.value); })
-         .transitionDuration(500)
-         .xAxis().ticks(6);
+         unitssoldsubregionChart
+          .height(300).width(600)
+          .dimension(subRegionDim)
+          .group(unitSoldBySubRegionGroup)
+          .elasticX(true)
+          .gap(1)
+          .label(function(d) { return d.key + " : " + d3.format(",") (+d.value); })
+          .margins({top: 10, right: 20, bottom: 30, left: 10})
+          .ordering(function(d) { return d.Sub_Region; })
+          .ordinalColors(SchemeSet3)
+          .title(function(d){ return "Units Sold: " + d3.format(",") (+d.value); })
+          .transitionDuration(500)
+          .xAxis().ticks(6);
        
     /* Units Sold by Item_Type Chart */
          unitssolditemtypeChart
@@ -209,31 +209,31 @@ function getData(error, salesData) {
           .transitionDuration(500)
           .xAxis().ticks(6);
           
-   /* Remove empty bins from Pie Chart data */
+    /* Remove empty bins from Pie Chart data */
         var totalProfitMonthGroupSumFiltered = remove_empty_bins(totalProfitMonthGroupSum);  
        
-   /* Create Profits by Month Chart */
-        pieChart
-        .height(300).width(600)
-        .radius(140).innerRadius(40)
-        .externalLabels(45).externalRadiusPadding(40)
-        .cy([152])
-        .dimension(orderDateMonthDim)
-        .group(totalProfitMonthGroupSumFiltered)
-        .drawPaths(true)
-        .minAngleForLabel(0)
-        .ordering(function(d) { return d.key; })
-        .ordinalColors(SchemeSet3)
-        .slicesCap(12)
-        .title(function(d){ return "Profits: " + "£" + d3.format(",") (+d.value); })
-        .transitionDuration(500)
-        // workaround for #703: not enough data is accessible through .label() to display percentages
-        .on('pretransition', function(chart) {
-             chart.selectAll('text.pie-slice').text(function(d) {
-             return d.data.key.split(".")[1] + ' ' + dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%'; })
-        })       
+    /* Create Profits by Month Chart */
+         pieChart
+          .height(300).width(600)
+          .radius(140).innerRadius(40)
+          .externalLabels(45).externalRadiusPadding(40)
+          .cy([152])
+          .dimension(orderDateMonthDim)
+          .group(totalProfitMonthGroupSumFiltered)
+          .drawPaths(true)
+          .minAngleForLabel(0)
+          .ordering(function(d) { return d.key; })
+          .ordinalColors(SchemeSet3)
+          .slicesCap(12)
+          .title(function(d){ return "Profits: " + "£" + d3.format(",") (+d.value); })
+          .transitionDuration(500)
+          // workaround for #703: not enough data is accessible through .label() to display percentages
+          .on('pretransition', function(chart) {
+               chart.selectAll('text.pie-slice').text(function(d) {
+               return d.data.key.split(".")[1] + ' ' + dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%'; })
+          })       
     
-   /* Create Totals by Month Chart */
+    /* Create Totals by Month Chart */
   	     totalsChart
           .height(300).width(600)
 	      .dimension(subRegionDim) 
@@ -266,7 +266,7 @@ function getData(error, salesData) {
           totalsChart.yAxis().tickFormat(d3.format('.2s'));
           totalsChart.xAxis().tickFormat(function(d) { return d.substr(3); });
     
-   /* Create data table */
+    /* Create data table */
          dataTable
           .height(300).width(600)
           .dimension(countryDim)
@@ -288,6 +288,9 @@ function getData(error, salesData) {
 		  .size(15) // Default = 25
 		  .sortBy(function (d) {return [d.Country,d.Item_Type,d.Order_Date].join(); })
 
+    /* Render Charts */
+         dc.renderAll(); 
+
     /* Remove empty bins Function (if value = 0), before passing to Chart(s) */  
        function remove_empty_bins(source_group) {
          return { all:function () { return source_group.all().filter(function(d) {
@@ -300,14 +303,12 @@ function getData(error, salesData) {
     // Print Filter Function Tip   
     // taken from the following artical  
     // https://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-Using-Crossfil  
-          function print_filter(filter) {
-             var f=eval(filter);
-              if (typeof(f.length) != "undefined") {} else{}
-    	      if (typeof(f.top) != "undefined") {f=f.top(Infinity);} else{}
-    	      if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);} else{}
-    	      console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
-          };  
+       function print_filter(filter) {
+        var f=eval(filter);
+         if (typeof(f.length) != "undefined") {} else{}
+         if (typeof(f.top) != "undefined") {f=f.top(Infinity);} else{}
+         if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);} else{}
+    	  console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
+       };  
           
-    /* Render Charts */
-        dc.renderAll(); 
 } 
