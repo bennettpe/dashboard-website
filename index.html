@@ -1,158 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
-                                                                  <title> Interactive Frontend Development Project (Paul Bennett) </title>
-    <!-- Required mega tags                                   --> <meta   charset="utf-8">
-    <!-- Required mega tags                                   --> <meta   name="viewport" content="width=device-width, initial-scale=1">
-     
-    <!-- BOOTSTRAP minified CSS file (v3.3.7)                 --> <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/> 
-    <!-- DC minified CSS file (v2.1.8)                        --> <link rel="stylesheet" type="text/css" href="/static/css/dc.min.css"/>
-    <!-- FONT AWESOME minified CSS file (v4.7.0)              --> <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>  
-    <!-- GOOGLE FONT CSS file                                 --> <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:200,400"/>
-    <!-- dashboard css file                                   --> <link rel="stylesheet" type="text/css" href="/static/css/main.css">
-    
-    <!-- D3 minified JavaScript file (v3.5.17)                --> <script type="text/javascript" src="/static/js/d3.min.js">                                                  </script>
-    <!-- D3 time-format minified JavaScript file (v2.1.1)     --> <script type="text/javascript" src="/static/js/d3-time-format.min.js">                                      </script> 
-    <!-- CROSSFILTER minified JavaScript file (v1.3.12)       --> <script type="text/javascript" src="/static/js/crossfilter.min.js">                                         </script>
-    <!-- DC minified JavaScript file (v2.1.8)                 --> <script type="text/javascript" src="/static/js/dc.js">                                                      </script>
-    <!-- JQUERY minified JavaScript file (v3.3.1)             --> <script type="text/javascript" src="/static/js/jquery.min.js">                                              </script> 
-    <!-- BOOTSTRAP minified JavaScript file (v3.5.17)         --> <script type="text/javascript" src="/static/js/bootstrap.min.js">                                           </script> 
-    <!-- QUEUE minified JavaScript file (v1.0.7)              --> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"> </script>
-    <!-- dashboard JavaScript file                            --> <script type="text/javascript" src="/static/js/main.js">                                                    </script> 
+                                                                            <title> Interactive Frontend Development Project (Paul Bennett) </title>
+    <!-- Required mega tags                                             --> <meta   charset="utf-8">
+    <!-- Required mega tags                                             --> <meta   name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- BOOTSTRAP minified CSS file (v4.1.3)                           --> <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"/>
+    <!-- DC.js minified CSS file (v2.1.10)                              --> <link rel="stylesheet" type="text/css" href="/static/css/dc.min.css"/>
+    <!-- FONT AWESOME minified CSS file (v4.7.0)                        --> <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
+    <!-- GOOGLE FONT CSS file                                           --> <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:200,400"/>
+    <!-- My dashboard css file                                          --> <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+   
+    <!-- D3.js minified JavaScript file (v3.5.17)                       --> <script type="text/javascript" src="/static/js/d3.min.js">                                                  </script>
+    <!-- D3.js time-format minified JavaScript file (v2.1.1)            --> <script type="text/javascript" src="/static/js/d3-time-format.min.js">                                      </script> 
+    <!-- CROSSFILTER minified JavaScript file (v1.4.6)                  --> <script type="text/javascript" src="/static/js/crossfilter.min.js">                                         </script>
+    <!-- DC.js minified JavaScript file (v2.1.10)                       --> <script type="text/javascript" src="/static/js/dc.min.js">                                                  </script>
+    <!-- JQUERY minified JavaScript file (v3.3.1)                       --> <script type="text/javascript" src="/static/js/jquery-3.3.1.min.js">                                        </script> 
+    <!-- BOOTSTRAP minified JavaScript file (v4.1.3)                    --> <script type="text/javascript" src="/static/js/bootstrap.bundle.min.js">                                    </script>
+    <!-- QUEUE minified JavaScript file (v1.0.7)                        --> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"> </script>
+    <!-- My dashboard JavaScript file                                   --> <script type="text/javascript" src="/static/js/main.js">                                                    </script> 
 
-<style>
-body {
- font-family: 'Lato', futura, georgia;
-}
-
-h4 span {
-   font-size: 13px;
- font-weight: normal;
-}
-</style>    
- </head>
+    <style>
+     body {
+           font-family: 'Lato', futura, georgia;
+          }
+    </style>
+</head>
  
 <body>
-    <nav class="navbar navbar-default">
-     <div class="container-fluid">
-      <div class="navbar-header">
-       <a class="navbar-brand" href="#"> Sales History 2013 </a>
-      </div>
-     </div>
+    
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap justify-content-center">
+       <div class="navbar-header">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"> Sales Records for 2013 </a>
+       </div>
     </nav> 
     
-<main>
-    <section class="section">    
-     <div class="container">
-      <div class="row">
-        <div class="span12">
-             <h2 class="section-heading"> Sales History 2013 </h2>
-        </div>
-           
-        <div class="span12">
-             <i class="fa fa-gbp        fa-2x" aria-hidden="true"> </i> <span class="number-display" id="dc-total-cost-display">       </span>   
-             <i class="fa fa-line-chart fa-2x" aria-hidden="true"> </i> <span class="number-display" id="dc-total-profit-display">     </span> 
-             <i class="fa fa-university fa-2x" aria-hidden="true"> </i> <span class="number-display" id="dc-total-revenue-display">    </span> 
-             <i class="fa fa-truck      fa-2x" aria-hidden="true"> </i> <span class="number-display" id="dc-total-unit-count-display"> </span>
-        </div>
-        
-        <div class="span12 dc-data-count">
-             <span class="filter-count"> </span> selected out of <span class="total-count"> </span> records &nbsp; 
-             <a href="javascript:dc.filterAll(); dc.renderAll();"> <button type="button" class="reset_all_button" id="reset_button"> Reset All Filters </button> </a> 
-        </div>
-      </div>
-     </div>
-    </section>  
-
-    <section class="section">  
-     <div class="container">
-      <div class="row">
-        
-        <div class="span4 units-sold-sub-region-chart text-center" id="dc-units-sold-sub-region-chart">
-         <h4> Units Sold by Sub Region 
-          <span> <a class="reset" href="javascript:unitssoldsubregionChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
-         </h4> 
-        </div>
-        
-        <div class="span4 country-units-sold-selector text-center" id="country-units-sold-selector"> 
-         <h4> Units Sold by Country </h4>
-        </div>
-        
-        <div class="span4 units-sold-item-type-chart text-center" id="dc-units-sold-item-type-chart">
-         <h4> Units Sold by Item Type 
-          <span> <a class="reset" href="javascript:unitssolditemtypeChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
-         </h4>
-        </div>
-      </div>
-    </section> 
-
-    <section class="section">
-     <div class="container">    
-      <div class="row">
-          <div class="span4 barChart text-center" id="dc-total-revenue-chart">  
-            <h4> Total Revenue (GBP) by Order Date Month 
-             <span> <a class="reset" href="javascript:totalrevenueChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
-            </h4>
-          </div> 
+    <div class="container-fluid mt-5">
+     <div class="row">
           
-          <div class="span4 barChart text-center" id="dc-total-cost-chart">  
-            <h4> Total Cost (GBP) by Order Date Month 
-             <span> <a class="reset" href="javascript:totalcostChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
-            </h4>
-          </div>
-          
-          <div class="span4 barChart text-center" id="dc-total-profit-chart">  
-            <h4> Total Profits (GBP) by Order Date Month 
-             <span> <a class="reset" href="javascript:totalprofitChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
-            </h4>
-          </div>
-      </div>
-     </div> 
-    </section>
-    
-    <section class="section">
-     <div class="container">    
-      <div class="row">
-       <div class="span4 pieChart text-center" id="dc-total-units-sold-chart">  
-            <h4> Total Units Sold by Order Date Month 
-             <span> <a class="reset" href="javascript:totalunitssoldChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
-            </h4>
-       </div>
-       <div class="span4 compositeChart text-center" id="dc-totals-chart">  
-            <h4> Totals (GBP) by Order Date Month 
-             <span> <a class="reset" href="javascript:totalsChart .filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> </span>
-            </h4>
-       </div>
-      </div>
-     </div> 
-    </section>
-    
-    <section class="section">
-     <div class="container "style="font: 12px sans-serif;">
-      <div class="row">
-       <div class='span12 dc-data-table'>
-        <table class='table table-hover' id='dc-data-table'>
-          <thead>
-           <tr class='header'>
-            <th style="text-align:left">   Country           </th>
-            <th style="text-align:left">   Item Type         </th>
-            <th style="text-align:center"> Order Date        </th>
-            <th style="text-align:center"> Ship Date         </th>
-            <th style="text-align:right">  Units Sold        </th>
-            <th style="text-align:right">  Unit Price (£)    </th>
-            <th style="text-align:right">  Unit Cost (£)     </th>
-            <th style="text-align:right">  Total Revenue (£) </th>
-            <th style="text-align:right">  Total Cost (£)    </th>
-            <th style="text-align:right">  Total Profit (£)  </th>
-           </tr>
-          </thead>
-         </table>
-       <div>
-      </div>
+      <!-- dc.numberDisplay -->
+          <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> <i class="fa fa-gbp fa-2x"        aria-hidden="true"></i> <span id="dc-total-cost-display">       </span></div> 
+          <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i> <span id="dc-total-profit-display">     </span></div> 
+          <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> <i class="fa fa-university fa-2x" aria-hidden="true"></i> <span id="dc-total-revenue-display">    </span></div> 
+          <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> <i class="fa fa-truck fa-2x"      aria-hidden="true"></i> <span id="dc-total-unit-count-display"> </span></div>
+         
+      <!-- dc.dataCount -->     
+          <div class=" col-xl-12 col-lg-12 mt-3 dc-data-count"> </div>
      </div>
-    </section>
+     
+     <div class="row">
+      <!-- dc.rowChart -->
+          <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 rowChart" id="dc-units-sold-sub-region-chart">
+              <h4> Units Sold by Sub Region 
+                <span> 
+                 <a class="reset" href="javascript:unitssoldsubregionChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> 
+                </span> 
+              </h4>
+          </div>
+       
+      <!-- dc.selectMenu -->    
+          <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 mt-3 selectMenu" id="country-units-sold-selector"> 
+              <h4> Units Sold by Country </h4>
+          </div>
+        
+      <!-- dc.rowChart -->    
+          <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 rowChart" id="dc-units-sold-item-type-chart">
+              <h4> Units Sold by Item Type 
+                <span> 
+                 <a class="reset"  href="javascript:unitssolditemtypeChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> 
+                </span>
+              </h4>
+          </div>
+     </div>
+    </div>
     
-</main>
+     <div class="row">
+      <!-- dc.rowChart -->
+          <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 rowChart" id="dc-total-units-sold-chart">  
+              <h4> Total Units Sold by Order Date Month 
+                <span> 
+                 <a class="reset" href="javascript:totalunitssoldChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> 
+                </span>
+              </h4>
+          </div>
+            
+      <!-- dc.compositeChart -->    
+          <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 compositeChart" id="dc-totals-chart">  
+              <h4> Totals (GBP) by Order Date Month 
+                <span> 
+                 <a class="reset" href="javascript:totalsChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> 
+                </span>
+              </h4>
+          </div>
+             
+      <!-- dc.pieChart -->     
+          <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 pieChart" id="dc-pie-chart">  
+              <h4> Total Profits (%) by Order Date Month 
+                <span> 
+                 <a class="reset" href="javascript:pieChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; Reset </a> 
+                </span>
+              </h4>
+          </div>    
+     </div>
+    </div>
+    
+    <div class="container-fluid">
+     <div class="row">
+      <!-- dc.dataTable -->      
+          <div class="col-xl-12 col-lg-12 col-md-12 text-center col-sm-12 my-3 dataTable">
+              <table class="table-bordered table-sm table-hover" id='dc-data-table'>
+               <thead>
+                <tr class='header'>
+                 <th style="text-align:left">   Country       </th>
+                 <th style="text-align:left">   Item Type     </th>
+                 <th style="text-align:center"> Order Date    </th>
+                 <th style="text-align:center"> Ship Date     </th>
+                 <th style="text-align:center"> Units Sold    </th>
+                 <th style="text-align:center"> Unit Price    </th>
+                 <th style="text-align:center"> Unit Cost     </th>
+                 <th style="text-align:center"> Total Revenue </th>
+                 <th style="text-align:center"> Total Cost    </th>
+                 <th style="text-align:center"> Total Profit  </th>
+                </tr>
+               </thead>
+              </table>
+          <div>
+     </div>
+    </div>
 </body>
 </html>

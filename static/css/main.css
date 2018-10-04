@@ -1,62 +1,36 @@
 /* main.css: Add and override styles */
 
-.navbar {
- background-color: lightgrey;
- border-color: steelblue;
- margin: 0;   
+body {
+  background: #f2f2f2; /* Concrete */
 }
 
-.section-heading {
-	     display: inline-block;	
-	       float: none;
- margin-bottom: 20px;
+#country-units-sold-selector { 
+  padding-bottom: 243px;
 }
 
-.number-display {
-  margin-right: 35px; 
-}
+#dc-data-table {
+ font-size: 12px; 
+ margin: 0px auto; 
+} 
 
-.reset_all_button {
-  margin-left: 10px;
-}
-
-/* google icons  */
-.material-icons {
-  display: inline-block; 
-  font-size: 2em;
-}
-
-.dc-data-count {
-  margin-bottom: 10px;
-}
-
-/* units sold by Country select menu */ 
-.dc-chart select {
-  height:  30px;
-   width: 350px;
- }
-
-.units-sold-sub-region-chart{
-  margin-left: 10px;
-}
-
-.country-units-sold-selector {
-    font-size: 12px; 
-  margin-left: 10px;
-}
-
-.units-sold-item-type-chart {
-  margin-left: 10px;
+/* padding for columns in table */
+.table-condensed>tbody>tr>td, 
+.table-condensed>tbody>tr>th, 
+.table-condensed>tfoot>tr>td, 
+.table-condensed>tfoot>tr>th, 
+.table-condensed>thead>tr>td, 
+.table-condensed>thead>tr>th  {
+  padding: 3px;
 }
 
 .dc-chart g.row text {
   fill: black;  
 }
 
-.bar:hover {
-  fill: yellow;
+.dc-chart .pie-slice {
+  fill: black;
 }
-
+  
 /* Alight Column 0 in dc.dataTable */ 
 .dc-table-row .dc-table-column._0 {
   text-align: left;
@@ -64,7 +38,7 @@
 
 /* Alight Column 1 in dc.dataTable */
 .dc-table-row .dc-table-column._1 {
-  text-align: left;
+  text-align: center;
 }
 
 /* Alight Column 2 in dc.dataTable */
@@ -80,4 +54,4 @@
 /* Alight Column 4 to 9 in dc.dataTable */
 .dc-chart td {
   text-align: right;
-}  
+}
