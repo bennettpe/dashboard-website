@@ -6,7 +6,7 @@ web developer course.
 
 ### Sales records csv 
 
-Fictitious Sales records data was downloaded from the following location 
+Fictitious Sales records data was downloaded from the following location </br>
 http://eforexcel.com/wp/downloads-18-sample-csv-files-data-sets-for-testing-sales </br> 
 and year 2013 was selected from the data.
 
