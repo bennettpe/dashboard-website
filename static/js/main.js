@@ -1,6 +1,6 @@
     /* Load CSV Data */
       queue()
-       .defer(d3.csv, "/data/2013 Sales Records.csv")
+       .defer(d3.csv, "./data/2013 Sales Records.csv")
        .await(getData);
        
 function getData(error, salesData) {
