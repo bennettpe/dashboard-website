@@ -19,78 +19,92 @@
     <!-- BOOTSTRAP minified JavaScript file (v4.1.3)                    --> <script type="text/javascript" src="./static/js/bootstrap.bundle.min.js"> </script>
     <!-- QUEUE minified JavaScript file (v1.0.7)                        --> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"> </script>
     <!-- My dashboard JavaScript file                                   --> <script type="text/javascript" src="./static/js/main.js"> </script>
-    <style>
-    body {
-        font-family: 'Lato', futura, georgia;
-    }
-    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-light border border-dark fixed-top flex-md-nowrap justify-content-center" style="background-color:#80b1d3;">
         <!-- Half Baked -->
-        <span class="navbar-brand col-sm-3 col-md-2 mb-0 h1"> Sales Records for 2013 </span>
+        <span class="navbar-brand col-sm-3 col-md-2 mb-0 h1">Sales Records for 2013</span>
     </nav>
+
     <div class="container-fluid mt-5">
         <div class="row">
             <!-- dc.numberDisplay -->
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> <i class="fa fa-gbp fa-2x" aria-hidden="true"></i> <span id="dc-total-cost-display"> </span></div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i> <span id="dc-total-profit-display"> </span></div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> <i class="fa fa-university fa-2x" aria-hidden="true"></i> <span id="dc-total-revenue-display"> </span></div>
-            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> <i class="fa fa-truck fa-2x" aria-hidden="true"></i> <span id="dc-total-unit-count-display"> </span></div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> 
+                <i class="fa fa-gbp fa-2x" aria-hidden="true"></i> 
+                <span id="dc-total-cost-display"></span>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> 
+                <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i> 
+                <span id="dc-total-profit-display"></span>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> 
+                <i class="fa fa-university fa-2x" aria-hidden="true"></i> 
+                <span id="dc-total-revenue-display"></span>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 mt-3 number-display"> 
+                <i class="fa fa-truck fa-2x" aria-hidden="true"></i> 
+                <span id="dc-total-unit-count-display"></span>
+            </div>
             <!-- dc.dataCount -->
-            <div class=" col-xl-12 col-lg-12 mt-3 dc-data-count"> </div>
+            <div class=" col-xl-12 col-lg-12 mt-3 dc-data-count"></div>
         </div>
+
         <div class="row">
             <!-- dc.rowChart -->
             <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 rowChart" id="dc-units-sold-sub-region-chart">
                 <h4> Units Sold by Sub Region
                     <span>
-                        <a class="reset" href="javascript:unitssoldsubregionChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small> Reset </small> </a>
+                        <a class="reset" href="javascript:unitssoldsubregionChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small>Reset</small></a>
                     </span>
                 </h4>
             </div>
+
             <!-- dc.selectMenu -->
             <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 mt-3 selectMenu" id="country-units-sold-selector">
                 <h4> Units Sold by Country </h4>
             </div>
+
             <!-- dc.rowChart -->
             <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 rowChart" id="dc-units-sold-item-type-chart">
                 <h4> Units Sold by Item Type
                     <span>
-                        <a class="reset" href="javascript:unitssolditemtypeChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small> Reset </small> </a>
+                        <a class="reset" href="javascript:unitssolditemtypeChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small>Reset</small></a>
                     </span>
                 </h4>
             </div>
         </div>
     </div>
+
     <div class="row">
         <!-- dc.rowChart -->
         <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 rowChart" id="dc-total-units-sold-chart">
             <h4> Total Units Sold by Order Date Month
                 <span>
-                    <a class="reset" href="javascript:totalunitssoldChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small> Reset </small> </a>
+                    <a class="reset" href="javascript:totalunitssoldChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small>Reset</small></a>
                 </span>
             </h4>
         </div>
+
         <!-- dc.compositeChart -->
         <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 compositeChart" id="dc-totals-chart">
             <h4> Totals (GBP) by Order Date Month
                 <span>
-                    <a class="reset" href="javascript:totalsChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small> Reset </small> </a>
+                    <a class="reset" href="javascript:totalsChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small> Reset</small></a>
                 </span>
             </h4>
         </div>
+
         <!-- dc.pieChart -->
         <div class="col-xl-4 col-lg-12 col-md-12 text-center col-sm-12 my-3 pieChart" id="dc-pie-chart">
             <h4> Total Profits (%) by Order Date Month
                 <span>
-                    <a class="reset" href="javascript:pieChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small> Reset </small> </a>
+                    <a class="reset" href="javascript:pieChart.filterAll(); dc.redrawAll();" style="display: none;"> &nbsp; <small>Reset</small></a>
                 </span>
             </h4>
         </div>
     </div>
-    </div>
+
     <div class="container-fluid">
         <div class="row">
             <!-- dc.dataTable -->
@@ -112,9 +126,9 @@
                         </tr>
                     </thead>
                 </table>
-                <div>
-                </div>
-            </div>
-</body>
+            <div>
+        </div>
+    </div>
 
+</body>
 </html>

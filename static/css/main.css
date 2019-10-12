@@ -5,6 +5,7 @@
 /* Changes to background colour */
 body {
   background: #f2f2f2; /* Concrete */
+  font-family: 'Lato', futura, georgia;
 }
 
 /* Changes to make height same as charts */
