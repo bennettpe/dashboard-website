@@ -62,7 +62,7 @@ function getData(error, salesData) {
         });
         
     /* groupAll function to sum up the values */
-       var allDim = ndx.dimension(function(d) { return d; });  
+       var allDim = ndx.dimension(function(d) {return d;});  
    
     /* groupAll function to sum up values for dc.numberDisplay(s) */       
        var sumAlltotals = allDim.groupAll().reduce( 
@@ -80,7 +80,7 @@ function getData(error, salesData) {
                               p.profitSum     -= v.Total_Profit;
                               return p;
               },
-              function ()    { return {unitCountSum: 0, revenueSum: 0, costSum: 0, profitSum: 0}
+              function ()    {return {unitCountSum: 0, revenueSum: 0, costSum: 0, profitSum: 0}
               });
     
     /* Create dc.numberDisplay(s) */                   
@@ -122,26 +122,26 @@ function getData(error, salesData) {
                           none:"<span> Total Units Sold &nbsp" + "<span style=\"color:#6495ED;\"> <strong> Zero Records </strong> </span>"
                         })
                    .transitionDuration(500)
-                   .valueAccessor(function (d) { return d.unitCountSum; });  
+                   .valueAccessor(function (d) {return d.unitCountSum;});  
                    
     /* Create Dimensionand Group for Sub_Region */
-       var subRegionDim                = ndx.dimension(function(d) { return d.Sub_Region; }),                                              // Dimension by Sub-Region
-           unitSoldBySubRegionGroup    = subRegionDim.group().reduceSum(function(d) { return d.Units_Sold; });                             // Unit_Sold by Sub_Region
+       var subRegionDim                = ndx.dimension(function(d) {return d.Sub_Region;}),                                             // Dimension by Sub-Region
+           unitSoldBySubRegionGroup    = subRegionDim.group().reduceSum(function(d) {return d.Units_Sold;});                            // Unit_Sold by Sub_Region
     
     /* Create Dimension and Group for Country */                                     
-       var countryDim                  = ndx.dimension(function(d) { return d.Country; }),                                                 // Dimension by Country
-           unitSoldByCountryGroup      = countryDim.group().reduceSum(function(d) { return d.Units_Sold; });                               // Unit_Sold by Country
+       var countryDim                  = ndx.dimension(function(d) {return d.Country;}),                                                // Dimension by Country
+           unitSoldByCountryGroup      = countryDim.group().reduceSum(function(d) {return d.Units_Sold;});                              // Unit_Sold by Country
     
     /* Create Dimension and Group for Item_Type */                                       
-       var itemTypeDim                 = ndx.dimension(function(d) { return d.Item_Type; }),                                               // Dimension by Item_Type
-           unitSoldByItemTypeGroup     = itemTypeDim.group().reduceSum(function(d) { return d.Units_Sold; });                              // Unit_Sold by Item_Type
+       var itemTypeDim                 = ndx.dimension(function(d) {return d.Item_Type;}),                                              // Dimension by Item_Type
+           unitSoldByItemTypeGroup     = itemTypeDim.group().reduceSum(function(d) {return d.Units_Sold;});                             // Unit_Sold by Item_Type
          
     /* Create Dimension and Groups for Order_Date_Month */   
-       var orderDateMonthDim          = ndx.dimension(function(d) { return d.Order_Date_Month; }),                                         // Dimension by Order_Date_Month
-           totalCostMonthGroupSum     = orderDateMonthDim.group().reduceSum(function(d) { return d3.format(".0f") (+d.Total_Cost);    }),  // Sum Total_Cost by Order_Date_Month
-           totalProfitMonthGroupSum   = orderDateMonthDim.group().reduceSum(function(d) { return d3.format(".0f") (+d.Total_Profit);  }),  // Sum Total_Profit by Order_Date_Month
-           totalRevenueMonthGroupSum  = orderDateMonthDim.group().reduceSum(function(d) { return d3.format(".0f") (+d.Total_Revenue); }),  // Sum Total_Revenue by Order_Date_Month
-           unitSoldbyMonthGroupSum    = orderDateMonthDim.group().reduceSum(function(d) { return d3.format(".0f") (+d.Units_Sold);    });  // Sum Units_Sold by Order_Date_Month
+       var orderDateMonthDim          = ndx.dimension(function(d) {return d.Order_Date_Month;}),                                         // Dimension by Order_Date_Month
+           totalCostMonthGroupSum     = orderDateMonthDim.group().reduceSum(function(d) {return d3.format(".0f") (+d.Total_Cost);}),     // Sum Total_Cost by Order_Date_Month
+           totalProfitMonthGroupSum   = orderDateMonthDim.group().reduceSum(function(d) {return d3.format(".0f") (+d.Total_Profit);}),   // Sum Total_Profit by Order_Date_Month
+           totalRevenueMonthGroupSum  = orderDateMonthDim.group().reduceSum(function(d) {return d3.format(".0f") (+d.Total_Revenue);}),  // Sum Total_Revenue by Order_Date_Month
+           unitSoldbyMonthGroupSum    = orderDateMonthDim.group().reduceSum(function(d) {return d3.format(".0f") (+d.Units_Sold);});     // Sum Units_Sold by Order_Date_Month
            
     /* Print Filter */ 
     // print_filter("totalProfitSubRegionGroupFiltered");
@@ -171,11 +171,11 @@ function getData(error, salesData) {
           .group(unitSoldBySubRegionGroup)
           .elasticX(true)
           .gap(1)
-          .label(function(d) { return d.key + " : " + d3.format(",") (+d.value); })
+          .label(function(d) {return d.key +" : "+ d3.format(",") (+d.value);})
           .margins({top: 10, right: 20, bottom: 30, left: 10})
-          .ordering(function(d) { return d.Sub_Region; })
+          .ordering(function(d) {return d.Sub_Region;})
           .ordinalColors(SchemeSet3)
-          .title(function(d){ return "Units Sold: " + d3.format(",") (+d.value); })
+          .title(function(d){return "Units Sold:" + d3.format(",") (+d.value);})
           .transitionDuration(500)
           .xAxis().ticks(6);
        
@@ -186,11 +186,11 @@ function getData(error, salesData) {
           .elasticX(true)
           .gap(1)
           .group(unitSoldByItemTypeGroup)
-          .label(function(d) { return d.key + " : " + d3.format(",") (+d.value); }) 
+          .label(function(d) {return d.key +" : " + d3.format(",") (+d.value);}) 
           .margins({top: 10, right: 20, bottom: 30, left: 10})
           .ordering(function(d) { return d.Item_Type; })
           .ordinalColors(SchemeSet3)
-          .title(function(d){ return "Units Sold: " + d3.format(",") (+d.value); })
+          .title(function(d){return "Units Sold:" + d3.format(",") (+d.value);})
           .transitionDuration(500)
           .xAxis().ticks(6);
           
@@ -201,11 +201,11 @@ function getData(error, salesData) {
           .group(unitSoldbyMonthGroupSum)
           .gap(1)
           .elasticX(true)
-          .label(function(d) { return d.key.split(".")[1] + " : " + d3.format(",") (+d.value); }) // split 01.Jan to Jan change [1] to [0] to get 01
+          .label(function(d) {return d.key.split(".")[1] +" : "+ d3.format(",") (+d.value);}) // split 01.Jan to Jan change [1] to [0] to get 01
           .ordering(function(d) { return d.key; }) 
           .ordinalColors(SchemeSet3)
           .margins({top: 10, right: 20, bottom: 30, left: 10})
-          .title(function(d){ return "Monthly Units Sold: " + d3.format(",") (+d.value); })
+          .title(function(d){return "Monthly Units Sold:"+ d3.format(",") (+d.value);})
           .transitionDuration(500)
           .xAxis().ticks(6);
           
@@ -225,12 +225,12 @@ function getData(error, salesData) {
           .ordering(function(d) { return d.key; })
           .ordinalColors(SchemeSet3)
           .slicesCap(12)
-          .title(function(d){ return "Profits: " + "£" + d3.format(",") (+d.value); })
+          .title(function(d){return "Profits: " + "£" + d3.format(",") (+d.value); })
           .transitionDuration(500)
           // workaround for #703: not enough data is accessible through .label() to display percentages
           .on('pretransition', function(chart) {
                chart.selectAll('text.pie-slice').text(function(d) {
-               return d.data.key.split(".")[1] + ' ' + dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%'; })
+               return d.data.key.split(".")[1] +' '+ dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%';})
           })       
     
     /* Create Totals by Month Chart */
@@ -251,40 +251,39 @@ function getData(error, salesData) {
                      .group(totalRevenueMonthGroupSum, 'Monthly Revenue')
                      .interpolate("monotone") 
                      .ordinalColors(["#80b1d3"])
-                     .valueAccessor(function(d) { return d.value; }), 
+                     .valueAccessor(function(d) {return d.value;}), 
                    dc.lineChart(totalsChart)
                      .group(totalCostMonthGroupSum, 'Monthly Costs')
                      .interpolate("monotone") 
                      .ordinalColors(["#fb8072"])
-                     .valueAccessor(function(d) { return d.value; }),
+                     .valueAccessor(function(d) {return d.value;}),
                    dc.lineChart(totalsChart)
                      .group(totalProfitMonthGroupSum, 'Monthly Profit')
                      .interpolate("monotone") 
                      .ordinalColors(["#b3de69"])
-                     .valueAccessor(function(d) { return d.value; })
+                     .valueAccessor(function(d) {return d.value;})
                   ])
           totalsChart.yAxis().tickFormat(d3.format('.2s'));
-          totalsChart.xAxis().tickFormat(function(d) { return d.substr(3); });
+          totalsChart.xAxis().tickFormat(function(d) {return d.substr(3);});
     
     /* Create data table */
          dataTable
-          .height(300).width(600)
-          .dimension(countryDim)
-	   	  .group(function(d) { return ""; })
+            .height(300).width(600)
+            .dimension(countryDim)
+	   	  .group(function(d) {return "";})
 		  .columns([
-		            function(d) { return d.Country;    },
-					function(d) { return d.Item_Type;  },
-					function(d) { return d.Order_Date; },
-          	        function(d) { return d.Ship_Date;  },
-          	        function(d) { return d.Units_Sold; },
-          	        function(d) { return "£" + d3.format(".2f")   (+d.Unit_Price);    },
-          	        function(d) { return "£" + d3.format(".2f")   (+d.Unit_Cost);     },
-          	        function(d) { return "£" + d3.format(",.0f")  (+d.Total_Revenue); },
-          	        function(d) { return "£" + d3.format(",.0f")  (+d.Total_Cost);    },
-          	        function(d) { return "£" + d3.format(",.0f")  (+d.Total_Profit);  }
-				  ])
-	      .showGroups(false)
-		  //.size(Infinity)
+		            function(d) {return d.Country;},
+				  function(d) {return d.Item_Type;},
+				  function(d) {return d.Order_Date;},
+          	       function(d) {return d.Ship_Date;},
+          	       function(d) {return d.Units_Sold;},
+          	       function(d) {return "£" + d3.format(".2f")  (+d.Unit_Price);},
+          	       function(d) {return "£" + d3.format(".2f")  (+d.Unit_Cost);},
+          	       function(d) {return "£" + d3.format(",.0f") (+d.Total_Revenue);},
+          	       function(d) {return "£" + d3.format(",.0f") (+d.Total_Cost);},
+          	       function(d) {return "£" + d3.format(",.0f") (+d.Total_Profit);}
+				 ])
+	       .showGroups(false)
 		  .size(15) // Default = 25
 		  .sortBy(function (d) {return [d.Country,d.Item_Type,d.Order_Date].join(); })
 
@@ -293,7 +292,7 @@ function getData(error, salesData) {
 
     /* Remove empty bins Function (if value = 0), before passing to Chart(s) */  
        function remove_empty_bins(source_group) {
-         return { all:function () { return source_group.all().filter(function(d) {
+         return {all:function () { return source_group.all().filter(function(d) {
               //return Math.abs(d.value) > 0.00001; // if using floating-point numbers
                 return d.value !== 0;               // if integers only
                 });

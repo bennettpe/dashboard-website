@@ -114,7 +114,7 @@ https://github.com/dc-js/dc.js/wiki/FAQ
        }
        
 This function helped in checking data was correct and was taken from the following article
-https://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-Using-Crossfil
+https://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-Using-Crossfilter
 
     // Print Filter Function Tip   
     
