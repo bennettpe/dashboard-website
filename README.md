@@ -17,13 +17,13 @@ The layout of the data is as follows
 | Variable        | Format      |
 |-----------------|-------------|
 | Sub_Region      | Alphabetic  |
-| Sub_Region_Code | Alphabetic  |
-| Country         | Alphabetic  |
-| Country_Code    | Alphabetic  |
+| Sub_Region_Code | Alphabetic  | 
+| Country         | Alphabetic  |                        
+| Country_Code    | Alphabetic  | 
 | Item_Type       | Alphabetic  |
 | Sales_Channel   | Alphabetic  |
 | Order_Priority  | Alphabetic  |
-| Order_Date      | dd/mm/yyyy  |
+| Order_Date      | dd/mm/yyyy  | 
 | Order_ID        | Alphabetic  |
 | Ship_Date       | dd/mm/yyyy  |
 | Units_Sold      | Numeric     |
