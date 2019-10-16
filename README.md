@@ -82,7 +82,7 @@ Versions of the software are documented in the brackets below.
     <!-- JQUERY minified JavaScript file (v3.3.1)            --> <script type="text/javascript" src="./static/js/jquery-3.3.1.min.js"> </script> 
     <!-- BOOTSTRAP minified JavaScript file (v4.1.3)         --> <script type="text/javascript" src="./static/js/bootstrap.bundle.min.js"> </script>
     <!-- QUEUE minified JavaScript file (v1.0.7)             --> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js">  </script>
-    <!-- My dashboard JavaScript file                         --> <script type="text/javascript" src="./static/js/main.js"> </script> 
+    <!-- My dashboard JavaScript file                        --> <script type="text/javascript" src="./static/js/main.js"> </script> 
 ```
 
 * [AWS Cloud9](https://aws.amazon.com/cloud9/) - Cloud-based integrated development environment (IDE) 
@@ -99,9 +99,35 @@ Versions of the software are documented in the brackets below.
 * [Mockup Pro](https://www.microsoft.com/en-us/p/mockup-pro-wireframe-and.../9nblggh10fcn) - Wireframe mockup
 * [Queue.js](https://github.com/d3/d3-queue) - Evaluate asynchronous tasks javascript library
 
+#### D3.js (Data-Driven Documents)
+
+D3.js is a JavaScript library for manipulating documents based on data using 
+* HTML (Hypertext Markup Language)
+* SVG  (Scalable Vector Graphics)
+* CSS  (Cascade Style Sheets)<br>
+    
+And a data-driven approach to DOM (Document Object Model) manipulation.
+
+#### Dc.js (Dimensional charting)
+
+DC.js is a specific library for charting with native <i>“crossfilter”</i> support and is called <i>“Dimensional Charting”</i> <br>
+it sits on top of D3.js and uses D3.js to render the charts in CSS-friendly SVG format.
+
+#### Crossfilter.js
+
+Crossfilter.js is another helper library and allows you to work with the data to make the charts rendered by DC.js interactive. <br>
+So if you click on a particular chart on the dashboard, another related chart, that is a chart bound to the same dataset, can react to that click and maybe represent a subset of the data that was represented in another chart.
+
+#### Note
+
+To use these three libraries, you should import them into your script in a following order, 
+* D3.js
+* Crossfilter.js
+* DC.js
+
 ### Acknowledgement(s)
 
-This function to remove empty bins is used to create data processed by the piechart and was taken from 
+This function to remove empty bins is used to create data processed by the piechart and was taken from <br> 
 https://github.com/dc-js/dc.js/wiki/FAQ
 
 ```js
@@ -118,7 +144,7 @@ https://github.com/dc-js/dc.js/wiki/FAQ
      }
 ```
 
-This function helped in checking data was correct and was taken from the following article
+This function helped in checking data was correct and was taken from the following article <br>
 https://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-Using-Crossfilter
 
 ```js
@@ -139,7 +165,7 @@ https://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-
           );
      }
 ```
-   
+
 ### Authors
 
- **Paul Edward Bennett** 
+ Paul Edward Bennett
