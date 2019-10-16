@@ -68,21 +68,22 @@ The following software is required to be able to create the Dashboard
 and was uploaded to the workspace and envoked via the INDEX.HTML file.
 
 Versions of the software are documented in the brackets below.
-
-    <!-- BOOTSTRAP minified CSS file (v4.1.3)                           --> <link rel="stylesheet" type="text/css" href="./static/css/bootstrap.min.css"/>
-    <!-- DC.js minified CSS file (v2.1.10)                              --> <link rel="stylesheet" type="text/css" href="./static/css/dc.min.css"/>
-    <!-- FONT AWESOME minified CSS file (v4.7.0)                        --> <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
-    <!-- GOOGLE FONT CSS file                                           --> <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:200,400"/>
-    <!-- My dashboard CSS file                                          --> <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+```html
+    <!-- BOOTSTRAP minified CSS file (v4.1.3)                --> <link rel="stylesheet" type="text/css" href="./static/css/bootstrap.min.css"/>
+    <!-- DC.js minified CSS file (v2.1.10)                   --> <link rel="stylesheet" type="text/css" href="./static/css/dc.min.css"/>
+    <!-- FONT AWESOME minified CSS file (v4.7.0)             --> <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/> 
+    <!-- GOOGLE FONT CSS file                                --> <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:200,400"/>
+    <!-- My dashboard CSS file                               --> <link rel="stylesheet" type="text/css" href="./static/css/main.css">
    
-    <!-- D3.js minified JavaScript file (v3.5.17)                       --> <script type="text/javascript" src="./static/js/d3.min.js">                                                  </script>
-    <!-- D3.js time-format minified JavaScript file (v2.1.1)            --> <script type="text/javascript" src="./static/js/d3-time-format.min.js">                                      </script> 
-    <!-- CROSSFILTER minified JavaScript file (v1.4.6)                  --> <script type="text/javascript" src="./static/js/crossfilter.min.js">                                         </script>
-    <!-- DC.js minified JavaScript file (v2.1.10)                       --> <script type="text/javascript" src="./static/js/dc.min.js">                                                  </script>
-    <!-- JQUERY minified JavaScript file (v3.3.1)                       --> <script type="text/javascript" src="./static/js/jquery-3.3.1.min.js">                                        </script> 
-    <!-- BOOTSTRAP minified JavaScript file (v4.1.3)                    --> <script type="text/javascript" src="./static/js/bootstrap.bundle.min.js">                                    </script>
-    <!-- QUEUE minified JavaScript file (v1.0.7)                        --> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js">  </script>
-    <!-- My dashboard JavaScript file                                   --> <script type="text/javascript" src="./static/js/main.js">                                                    </script> 
+    <!-- D3.js minified JavaScript file (v3.5.17)            --> <script type="text/javascript" src="./static/js/d3.min.js"> </script>
+    <!-- D3.js time-format minified JavaScript file (v2.1.1) --> <script type="text/javascript" src="./static/js/d3-time-format.min.js"> </script> 
+    <!-- CROSSFILTER minified JavaScript file (v1.4.6)       --> <script type="text/javascript" src="./static/js/crossfilter.min.js"> </script>
+    <!-- DC.js minified JavaScript file (v2.1.10)            --> <script type="text/javascript" src="./static/js/dc.min.js"> </script>
+    <!-- JQUERY minified JavaScript file (v3.3.1)            --> <script type="text/javascript" src="./static/js/jquery-3.3.1.min.js"> </script> 
+    <!-- BOOTSTRAP minified JavaScript file (v4.1.3)         --> <script type="text/javascript" src="./static/js/bootstrap.bundle.min.js"> </script>
+    <!-- QUEUE minified JavaScript file (v1.0.7)             --> <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js">  </script>
+    <!-- My dashboard JavaScript file                         --> <script type="text/javascript" src="./static/js/main.js"> </script> 
+```
 
 * [AWS Cloud9](https://aws.amazon.com/cloud9/) - Cloud-based integrated development environment (IDE) 
 * [Bootstrap](https://getbootstrap.com/) - Front-end component library
@@ -103,29 +104,42 @@ Versions of the software are documented in the brackets below.
 This function to remove empty bins is used to create data processed by the piechart and was taken from 
 https://github.com/dc-js/dc.js/wiki/FAQ
 
-    /* Remove empty bins Function (if value = 0), before passing to Chart(s) */  
-    
-       function remove_empty_bins(source_group) {
-         return { all:function () { return source_group.all().filter(function(d) {
-              //return Math.abs(d.value) > 0.00001; // if using floating-point numbers
-                return d.value !== 0;               // if integers only
-                });
-            }};
-       }
-       
+```js
+    // Remove empty bins Function (if value = 0), before passing to Chart(s) 
+     function remove_empty_bins(source_group) {
+          return {
+               all: function () {
+                    return source_group.all().filter(function (d) {
+                         //return Math.abs(d.value) > 0.00001; // if using floating-point numbers
+                         return d.value !== 0; // if integers only
+                    });
+               }
+          };
+     }
+```
+
 This function helped in checking data was correct and was taken from the following article
 https://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-Using-Crossfilter
 
+```js
     // Print Filter Function Tip   
-    
-       function print_filter(filter) {
-        var f=eval(filter);
-         if (typeof(f.length) != "undefined") {} else{}
-         if (typeof(f.top) != "undefined") {f=f.top(Infinity);} else{}
-         if (typeof(f.dimension) != "undefined") {f=f.dimension(function(d) { return "";}).top(Infinity);} else{}
-    	  console.log(filter+"("+f.length+") = "+JSON.stringify(f).replace("[","[\n\t").replace(/}\,/g,"},\n\t").replace("]","\n]"));
-       };  
-    
+    function print_filter(filter) {
+          var f = eval(filter);
+          if (typeof f.length != "undefined") {} else { }
+          if (typeof f.top != "undefined") {f = f.top(Infinity);} else { }
+          if (typeof f.dimension != "undefined") {
+               f = f.dimension(function (d) { return ""; })
+                    .top(Infinity);
+          } else { }
+          console.log(filter + "(" + f.length + ") = " +
+               JSON.stringify(f)
+                    .replace("[", "[\n\t")
+                    .replace(/}\,/g, "},\n\t")
+                    .replace("]", "\n]")
+          );
+     }
+```
+   
 ### Authors
 
  **Paul Edward Bennett** 

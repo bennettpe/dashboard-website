@@ -471,7 +471,7 @@ function getData(error, salesData) {
 
      // Print Filter Function Tip
      // taken from the following artical
-     // https://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-Using-Crossfil
+     // https://www.codeproject.com/Articles/693841/Making-Dashboards-with-Dc-js-Part-1-Using-Crossfilter
      function print_filter(filter) {
           var f = eval(filter);
           if (typeof f.length != "undefined") {} else { }
